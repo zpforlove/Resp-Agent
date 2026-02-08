@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resp-agent"
+version = "0.1.0"
+description = "Resp-Agent: A multi-agent framework for respiratory sound diagnosis and generation"
+readme = "resp_agent/README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "Austin", email = "austin@example.com"}
+]
+keywords = ["respiratory", "audio", "diagnosis", "generation", "deep-learning", "transformers"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "numpy>=1.20.0",
+    "pandas>=1.3.0",
+    "PyYAML>=5.4.0",
+    "openai>=1.0.0",
+    "tqdm>=4.60.0",
+    "torchdiffeq>=0.2.0",
+    "vocos>=0.1.0",
+    "transformers>=4.20.0",
+]
+
+[project.optional-dependencies]
+cuda = [
+    "torch==2.8.0",
+    "torchaudio==2.8.0",
+    "torchvision==0.23.0",
+]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "isort>=5.10.0",
+]
+
+[project.scripts]
+resp-agent = "resp_agent.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/austin/resp-agent"
+Repository = "https://github.com/austin/resp-agent"
+Documentation = "https://github.com/austin/resp-agent#readme"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["resp_agent*"]
+
+[tool.setuptools.package-data]
+resp_agent = ["*.yaml", "*.json"]

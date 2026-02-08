@@ -34,7 +34,35 @@ Agent/
 
 ## ⚙️ 环境配置
 
-### 1. Python 依赖安装
+### 方式 A：pip 安装（推荐）
+
+直接通过 pip 安装使用：
+
+```bash
+# 首先安装 PyTorch（CUDA 支持）
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+
+# 安装 resp-agent
+pip install resp-agent
+```
+
+安装后直接使用：
+```bash
+resp-agent chat --lang zh   # 中文版
+resp-agent chat --lang en   # 英文版
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+```
+
+### 方式 B：克隆仓库
+
+```bash
+git clone https://github.com/AustinZhang/resp-agent.git
+cd resp-agent
+pip install -e .
+```
+
+### 依赖安装（不使用 pip 时）
 
 ```bash
 pip install -r requirements.txt

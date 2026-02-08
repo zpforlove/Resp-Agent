@@ -34,7 +34,35 @@ Agent/
 
 ## ⚙️ Setup
 
-### 1. Install Dependencies
+### Option A: Install as Package (Recommended)
+
+Install with pip for easy usage:
+
+```bash
+# Install PyTorch with CUDA support first
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+
+# Install resp-agent
+pip install resp-agent
+```
+
+Then use directly:
+```bash
+resp-agent chat --lang en   # English
+resp-agent chat --lang zh   # Chinese
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+```
+
+### Option B: Clone Repository
+
+```bash
+git clone https://github.com/AustinZhang/resp-agent.git
+cd resp-agent
+pip install -e .
+```
+
+### Install Dependencies (if not using pip)
 
 ```bash
 pip install -r requirements.txt
