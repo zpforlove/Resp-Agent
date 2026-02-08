@@ -34,68 +34,20 @@ Agent/
 
 ## ⚙️ Setup
 
-### Option A: Install as Package (Recommended)
-
-Install with pip for easy usage:
+### 1. Create Conda Environment (Recommended)
 
 ```bash
-# Install PyTorch with CUDA support first
-pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
-
-# Install resp-agent
-pip install resp-agent
+conda create -n breath python=3.10 -y
+conda activate breath
 ```
 
-Then use directly:
-```bash
-resp-agent chat --lang en   # English
-resp-agent chat --lang zh   # Chinese
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
-```
-
-### Option B: Clone Repository
+### 2. Install Dependencies
 
 ```bash
-git clone https://github.com/AustinZhang/resp-agent.git
-cd resp-agent
-pip install -e .
+pip install openai pandas torch torchaudio transformers
 ```
 
-### Install Dependencies (if not using pip)
-
-```bash
-pip install -r requirements.txt
-```
-
-Or install manually:
-```bash
-pip install openai pandas torch torchaudio transformers huggingface_hub
-```
-
-### 2. Download Model Weights
-
-> [!IMPORTANT]
-> **Model files (~22GB) are hosted on HuggingFace and must be downloaded before running!**
-
-**Option A: Using download script (Recommended)**
-```bash
-python download_models.py
-```
-
-**Option B: Manual download**
-
-Download from 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) and place files according to the directory structure below.
-
-**DeepSeek-R1 Model** (downloaded separately):
-```bash
-# Using huggingface_hub
-python -c "from huggingface_hub import snapshot_download; snapshot_download('deepseek-ai/DeepSeek-R1-Distill-Qwen-7B', local_dir='Diagnoser/checkpoints/deepseek-r1')"
-```
-
-Or download directly from: 🔗 [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
-
-### 3. Configure DeepSeek API Key
+### 2. Configure DeepSeek API Key
 
 > [!IMPORTANT]
 > **This is a required step to run the Agent!**
@@ -117,13 +69,10 @@ source ~/.bashrc
 $env:DEEPSEEK_API_KEY = "your-api-key-here"
 ```
 
-### 4. Verify Configuration
+### 3. Verify Configuration
 
 ```bash
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
-
-# Verify model files
-python download_models.py --verify-only
 ```
 
 ## 🚀 Quick Start
@@ -231,7 +180,6 @@ client = OpenAI(
 
 This project is built upon the following excellent open-source projects:
 
-- [BEATs](https://github.com/microsoft/unilm/tree/master/beats) - Audio Pre-Training with Acoustic Tokenizers (Microsoft)
 - [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - Reasoning model powering the Thinker agent
 - [Longformer](https://github.com/allenai/longformer) - Long document transformer for EHR processing
 - [Qwen3](https://github.com/QwenLM/Qwen3) - Large language model foundation

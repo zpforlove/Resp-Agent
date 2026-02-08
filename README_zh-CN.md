@@ -36,13 +36,19 @@ Agent/
 
 ### 方式 A：pip 安装（推荐）
 
-直接通过 pip 安装使用：
-
+**1. 创建干净的 conda 环境：**
 ```bash
-# 首先安装 PyTorch（CUDA 支持）
-pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+conda create -n breath python=3.10 -y
+conda activate breath
+```
 
-# 安装 resp-agent
+**2. 安装 PyTorch（CUDA 支持）：**
+```bash
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+**3. 安装 resp-agent：**
+```bash
 pip install resp-agent
 ```
 
