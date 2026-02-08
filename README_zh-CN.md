@@ -340,7 +340,7 @@ Generator 支持生成以下类型的呼吸音：
 
 本项目的开发得益于以下优秀的开源项目：
 
-- [BEATs](https://github.com/microsoft/unilm/tree/master/beats) - 基于声学 Tokenizer 的音频预训练框架（Microsoft）
+- [BEATs](https://github.com/microsoft/unilm/tree/master/beats) - 基于声学 Tokenizer 的音频预训练框架
 - [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - 为 Thinker 智能体提供推理能力的模型
 - [Longformer](https://github.com/allenai/longformer) - 用于电子病历处理的长文档 Transformer
 - [Qwen3](https://github.com/QwenLM/Qwen3) - 大语言模型基础架构
