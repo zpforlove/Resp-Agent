@@ -34,17 +34,40 @@ Agent/
 
 ## ⚙️ Setup
 
-### 1. Create Conda Environment (Recommended)
+### Option A: Install as Package (Recommended)
 
+**1. Create a clean conda environment:**
 ```bash
 conda create -n breath python=3.10 -y
 conda activate breath
 ```
 
-### 2. Install Dependencies
+**2. Install PyTorch with CUDA support:**
+```bash
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+**3. Install resp-agent:**
+```bash
+pip install resp-agent
+```
+
+Then use directly:
+```bash
+resp-agent chat --lang en   # English interactive agent
+resp-agent chat --lang zh   # Chinese interactive agent
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+```
+
+### Option B: Clone Repository
 
 ```bash
-pip install openai pandas torch torchaudio transformers
+git clone https://github.com/zpforlove/Resp-Agent.git
+cd Resp-Agent
+conda create -n breath python=3.10 -y
+conda activate breath
+pip install -e .
 ```
 
 ### 2. Configure DeepSeek API Key

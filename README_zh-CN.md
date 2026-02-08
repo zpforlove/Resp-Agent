@@ -54,8 +54,8 @@ pip install resp-agent
 
 安装后直接使用：
 ```bash
-resp-agent chat --lang zh   # 中文版
-resp-agent chat --lang en   # 英文版
+resp-agent chat --lang zh   # 中文版交互智能体
+resp-agent chat --lang en   # 英文版交互智能体
 resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
 resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
 ```
@@ -63,8 +63,10 @@ resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
 ### 方式 B：克隆仓库
 
 ```bash
-git clone https://github.com/AustinZhang/resp-agent.git
-cd resp-agent
+git clone https://github.com/zpforlove/Resp-Agent.git
+cd Resp-Agent
+conda create -n breath python=3.10 -y
+conda activate breath
 pip install -e .
 ```
 
