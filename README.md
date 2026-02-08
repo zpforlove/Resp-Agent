@@ -203,7 +203,7 @@ client = OpenAI(
 
 This project is built upon the following excellent open-source projects:
 
-- [BEATs](https://github.com/microsoft/unilm/tree/master/beats) - Audio Pre-Training with Acoustic Tokenizers (Microsoft)
+- [BEATs](https://github.com/microsoft/unilm/tree/master/beats) - Audio Pre-Training with Acoustic Tokenizers
 - [DeepSeek-R1](https://github.com/deepseek-ai/DeepSeek-R1) - Reasoning model powering the Thinker agent
 - [Longformer](https://github.com/allenai/longformer) - Long document transformer for EHR processing
 - [Qwen3](https://github.com/QwenLM/Qwen3) - Large language model foundation
