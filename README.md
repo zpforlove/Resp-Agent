@@ -98,6 +98,42 @@ $env:DEEPSEEK_API_KEY = "your-api-key-here"
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
 ```
 
+### 4. Download Dataset (For Training)
+
+> [!NOTE]
+> **Dataset files (~66GB) are hosted on HuggingFace. Required only for training/fine-tuning.**
+
+**Option A: Using download script:**
+```bash
+python download_models.py --include-dataset
+```
+
+**Option B: Manual download:**
+
+Download from 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset) and extract:
+```bash
+# Using huggingface_hub
+from huggingface_hub import hf_hub_download
+
+hf_hub_download(
+    repo_id="AustinZhang/resp-agent-dataset",
+    filename="dataset.zip",
+    repo_type="dataset",
+    local_dir="./data"
+)
+
+# Extract
+unzip ./data/dataset.zip -d ./data/
+```
+
+Then update paths in `Diagnoser/config.yaml`:
+```yaml
+data:
+  train_root: "./data/dataset/train"
+  val_root: "./data/dataset/valid"
+  test_root: "./data/dataset/test"
+```
+
 ## 🚀 Quick Start
 
 ```bash

@@ -146,6 +146,42 @@ python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_
 python download_models.py --verify-only
 ```
 
+### 5. 下载数据集（训练用）
+
+> [!NOTE]
+> **数据集文件（~66GB）托管在 HuggingFace。仅训练/微调时需要下载。**
+
+**方式 A：使用下载脚本**
+```bash
+python download_models.py --include-dataset
+```
+
+**方式 B：手动下载**
+
+从 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset) 下载并解压：
+```bash
+# 使用 huggingface_hub
+from huggingface_hub import hf_hub_download
+
+hf_hub_download(
+    repo_id="AustinZhang/resp-agent-dataset",
+    filename="dataset.zip",
+    repo_type="dataset",
+    local_dir="./data"
+)
+
+# 解压
+unzip ./data/dataset.zip -d ./data/
+```
+
+然后在 `Diagnoser/config.yaml` 中更新路径：
+```yaml
+data:
+  train_root: "./data/dataset/train"
+  val_root: "./data/dataset/valid"
+  test_root: "./data/dataset/test"
+```
+
 ## 🚀 快速开始
 
 **中文版：**
