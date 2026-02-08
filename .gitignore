@@ -1,0 +1,34 @@
+# Model files (hosted on HuggingFace)
+*.pth
+*.pt
+*.safetensors
+*.bin
+
+# Keep directory structure
+!.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Output directories content
+output_diagnose/*
+output_generate/*
+!output_diagnose/.gitkeep
+!output_generate/.gitkeep
+
+# Large data files (hosted on HuggingFace)
+audio_descriptions.jsonl
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

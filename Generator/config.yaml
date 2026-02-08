@@ -1,0 +1,118 @@
+# Data Configuration
+data:
+  train_root: "/mnt/data/RespAgent/Fusion/dataset/train"   # Training data path
+  val_root: "/mnt/data/RespAgent/Fusion/dataset/valid"     # Validation data path
+  test_root: "/mnt/data/RespAgent/Fusion/dataset/test"     # Test data path
+  num_workers: 4                    # Number of worker processes for data loading per GPU
+  pin_memory: true                  # Whether to use pinned memory for data loading
+
+# Path Configuration
+paths:
+  # BEATs Tokenizer model for extracting lung sound content
+  beats_tokenizer: "/mnt/data/RespAgent/Agent/Generator/pretrained_models/Tokenizer_iter3_plus_AS2M.pt"
+  # BEATs Feature Extractor model for extracting timbre embedding vectors
+  beats_feature_extractor_checkpoint: "/mnt/data/RespAgent/Agent/Generator/pretrained_models/BEATs_iter3_plus_AS2M.pt"
+  # Checkpoint save directory
+  checkpoint_dir: "/mnt/data/RespAgent/Agent/Generator/checkpoints"
+
+# Dataset Audio Configuration
+audio:
+  sample_rate: 16000  # Sample rate
+  max_length: 160000  # Maximum audio length (10s)
+
+# Hyperparameter Configuration
+hyperparameters:
+  longformer:
+    model_name: allenai/longformer-base-4096   # Longformer base model; supports global_attention_mask
+    beats_feature_size: 768                    # BEATs output feature dimension
+    max_sequence_length: 4096                  # Longformer maximum sequence length
+    max_text_tokens: 128                       # Maximum number of tokens for the descriptive text
+    text_drop_prob: 0.2                        # Probability of randomly masking the descriptive text during training
+    audio_drop_prob: 0.1                       # Probability of randomly zeroing out the 496 audio time steps during training
+    audio_global_stride: 4                     # Audio anchor stride
+    num_epochs: 5                              # Number of training epochs
+    eval_batch_size: 4                         # Test/Validation batch size
+    gradient_checkpointing: true               # Whether to enable gradient checkpointing
+    optimizer:
+      weight_decay: 0.01                       # AdamW weight decay
+      betas: [ 0.9, 0.999 ]                    # AdamW beta parameters
+      scheduler:
+        max_lr: 1.0e-5                         # OneCycleLR peak learning rate
+        pct_start: 0.1                         # OneCycleLR warmup percentage
+        div_factor: 10.0                       # Initial lr = max_lr / div_factor
+        final_div_factor: 100.0                # Final lr = max_lr / final_div_factor
+
+  llm: # LLM Autoregressive Model Training Phase
+    model_name: "Qwen/Qwen3-0.6B-Base"      # Base model selection
+    llm_hidden_size: 1024                   # LLM hidden layer dimension
+    beats_time_step: 496                    # BEATs feature sequence length for 10s
+    beats_feature_size: 768                 # BEATs feature embedding dimension
+    style_token_count: 8                    # Number of style prefix tokens
+    mask_ratio: 0.1                         # Ratio of the target interval used for "prefix masking"
+    max_sequence_length: 4096               # Maximum context length for the LLM input sequence
+    gradient_checkpointing: true            # Enable gradient checkpointing
+    num_epochs: 3                           # Total number of training epochs
+    optimizer:
+      weight_decay: 0.01          # Weight decay coefficient
+      betas: [ 0.9, 0.999 ]       # Beta parameters for the AdamW optimizer
+      scheduler:
+        max_lr: 0.0001            # Maximum learning rate for the OneCycleLR scheduler
+        pct_start: 0.1            # Percentage of total steps to reach the maximum learning rate
+        div_factor: 10.0          # Initial learning rate = max_lr / div_factor
+        final_div_factor: 100.0   # Final learning rate = max_lr / (div_factor * final_div_factor)
+
+  flow: # Flow Matching Model Training Phase
+    mel_mean: -5.8843         # Global mean of Mel-spectrogram (for normalization)
+    mel_std: 2.2615           # Global standard deviation of Mel-spectrogram (for normalization)
+    vocab_size: 1024          # BEATs Token vocabulary size
+    token_embedding_dim: 1024 # Embedding dimension for BEATs Token
+    feature_dim: 768          # Dimension of BEATs feature
+    hidden_dim: 1024          # DiT hidden layer dimension
+    n_heads: 16               # Number of attention heads
+    n_layers: 16              # Number of DiT layers
+    ff_mult: 4                # Feed-forward network scaling factor
+    dropout: 0.2              # Dropout probability
+    sigma: 0.5                # Noise scale coefficient (controls noise intensity)
+    cond_drop_prob: 0.2       # Proportion of unconditional samples for CFG
+    n_timesteps: 32           # Number of timesteps in the inference phase
+    cfg_scale: 3.0            # CFG weight for the inference phase
+    num_epochs: 5             # Total number of training epochs
+    optimizer:
+      weight_decay: 0.01          # Weight decay coefficient
+      betas: [ 0.9, 0.999 ]       # Beta parameters for the AdamW optimizer
+      scheduler:
+        max_lr: 0.0001            # Maximum learning rate for the OneCycleLR scheduler (can be the same as optimizer.lr)
+        pct_start: 0.1            # Percentage of total steps to reach the maximum learning rate
+        div_factor: 10.0          # Initial learning rate = max_lr / div_factor
+        final_div_factor: 100.0   # Final learning rate = max_lr / final_div_factor (at the end of the annealing phase)
+
+# Vocoder Configuration
+vocos:
+  # Output sample rate configuration
+  sample_rate: 24000   # Sample rate required by the Vocos model
+  # Resample parameters
+  resample:
+    method: "sinc_interp_kaiser"   # Resampling method (e.g., sinc interpolation with Kaiser window)
+    lowpass_filter_width: 6        # Low-pass filter width for the resampling process
+    rolloff: 0.99                  # Rolloff coefficient, controls the steepness of the resampling filter's transition band
+  # Mel-spectrogram parameters
+  mel:
+    n_fft: 1024         # Window size for Fast Fourier Transform (FFT)
+    hop_length: 256     # Hop length, number of samples between adjacent frames
+    win_length: 1024    # Window length for STFT (Short-Time Fourier Transform) analysis
+    n_mels: 100         # Number of Mel filter banks, determining the dimension of the Mel-spectrogram
+    f_min: 0.0          # Minimum frequency for the Mel filter bank
+    f_max: 12000        # Maximum frequency for the Mel filter bank
+    center: true        # Whether to center the window on the frame
+    power: 1.0          # Exponent for the power spectrogram (1.0 for magnitude, 2.0 for power)
+
+# Logging Configuration
+logging:
+  wandb:
+    project: "respiratory-sound-Fusion"  # wandb project name
+    name: "lung-audio"  # Experiment name
+    enabled: true  # Whether to enable wandb
+  console:
+    level: "INFO"  # Log level
+    format: "%(asctime)s [%(levelname)s] %(message)s"  # Log format
+    to_file: false  # Whether to output to a file

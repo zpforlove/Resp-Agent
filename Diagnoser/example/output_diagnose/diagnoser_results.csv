@@ -1,0 +1,21 @@
+audio_filename,covid_test_result(GT),predicted_disease,covid_match
+47188_8CycryfriJtBsOLg_NEG.wav,Negative,COVID-19,False
+49299_1e5UOhIpVonBUtWP_NEG.wav,Negative,Control Group,True
+52498_NqawbtReaeRSGYr8_NEG.wav,Negative,Control Group,True
+59079_1AaZ7rknOLjN19UO_NEG.wav,Negative,COVID-19,False
+67149_dGiZv4sejoRD5W3E_NEG.wav,Negative,Control Group,True
+69114_NgJE995n3Fki39hO_NEG.wav,Negative,Control Group,True
+70973_UKav7LBVBh0tI9Os_NEG.wav,Negative,Control Group,True
+79939_1LnjI9GxGiHL5dI0_NEG.wav,Negative,Control Group,True
+94721_HAqTu8F8LzCD9vDW_POS.wav,Positive,COVID-19,True
+95441_AM0hYUmw8sgFANNz_POS.wav,Positive,COVID-19,True
+96951_5GBuOmdixEZL2In8_POS.wav,Positive,COVID-19,True
+97441_O2NhhD7tAqiEYbBm_NEG.wav,Negative,COVID-19,False
+97836_CdHWOw6V5QEdMFm4_NEG.wav,Negative,COVID-19,False
+98326_4N4Iy8is02NPcyVa_POS.wav,Positive,Control Group,False
+98361_1rilWCtnIDhzDbtk_POS.wav,Positive,Control Group,False
+98528_0wnBcDDAriXAHtse_POS.wav,Positive,Control Group,False
+99059_0nx1hv6TOuRSZuCn_POS.wav,Positive,COVID-19,True
+99380_2WluufGQpG0nOrKp_POS.wav,Positive,Control Group,False
+99517_K4aXGC6V5cxI9WqT_POS.wav,Positive,COVID-19,True
+99794_Jq9S8kTnDXCMjcvv_POS.wav,Positive,COVID-19,True
