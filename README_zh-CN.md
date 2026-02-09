@@ -151,35 +151,32 @@ python download_models.py --verify-only
 > [!NOTE]
 > **Resp-229K 数据集（~66GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
 
-**方式 A：使用下载脚本**
+**方式 A：使用下载脚本（推荐）**
 ```bash
-python download_models.py --include-dataset
+python download_dataset.py
+# 或指定输出目录：
+python download_dataset.py --output-dir ./data
 ```
 
 **方式 B：手动下载**
 
-从 🤗 [AustinZhang/Resp-229K](https://huggingface.co/datasets/AustinZhang/Resp-229K) 下载并解压：
-```bash
-# 使用 huggingface_hub
-from huggingface_hub import hf_hub_download
+从 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset) 下载：
+```python
+from huggingface_hub import snapshot_download
 
-hf_hub_download(
-    repo_id="AustinZhang/Resp-229K",
-    filename="dataset.zip",
+snapshot_download(
+    repo_id="AustinZhang/resp-agent-dataset",
     repo_type="dataset",
     local_dir="./data"
 )
-
-# 解压
-unzip ./data/dataset.zip -d ./data/
 ```
 
 然后在 `Diagnoser/config.yaml` 中更新路径：
 ```yaml
 data:
-  train_root: "./data/dataset/train"
-  val_root: "./data/dataset/valid"
-  test_root: "./data/dataset/test"
+  train_root: "./data/train"
+  val_root: "./data/valid"
+  test_root: "./data/test"
 ```
 
 ## 🚀 快速开始

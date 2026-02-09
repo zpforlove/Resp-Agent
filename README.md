@@ -103,35 +103,32 @@ python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API
 > [!NOTE]
 > **Resp-229K dataset (~66GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
 
-**Option A: Using download script:**
+**Option A: Using download script (Recommended):**
 ```bash
-python download_models.py --include-dataset
+python download_dataset.py
+# Or specify output directory:
+python download_dataset.py --output-dir ./data
 ```
 
 **Option B: Manual download:**
 
-Download from 🤗 [AustinZhang/Resp-229K](https://huggingface.co/datasets/AustinZhang/Resp-229K) and extract:
-```bash
-# Using huggingface_hub
-from huggingface_hub import hf_hub_download
+Download from 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset):
+```python
+from huggingface_hub import snapshot_download
 
-hf_hub_download(
-    repo_id="AustinZhang/Resp-229K",
-    filename="dataset.zip",
+snapshot_download(
+    repo_id="AustinZhang/resp-agent-dataset",
     repo_type="dataset",
     local_dir="./data"
 )
-
-# Extract
-unzip ./data/dataset.zip -d ./data/
 ```
 
 Then update paths in `Diagnoser/config.yaml`:
 ```yaml
 data:
-  train_root: "./data/dataset/train"
-  val_root: "./data/dataset/valid"
-  test_root: "./data/dataset/test"
+  train_root: "./data/train"
+  val_root: "./data/valid"
+  test_root: "./data/test"
 ```
 
 ## 🚀 Quick Start
