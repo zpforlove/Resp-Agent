@@ -70,7 +70,40 @@ conda activate breath
 pip install -e .
 ```
 
-### 2. Configure DeepSeek API Key
+### Install Dependencies (Without pip install)
+
+```bash
+pip install -r requirements.txt
+```
+
+Or install manually:
+```bash
+pip install openai pandas torch torchaudio transformers huggingface_hub
+```
+
+### 2. Download Model Weights
+
+> [!IMPORTANT]
+> **Model files (~22GB) are hosted on HuggingFace. Must download before running!**
+
+**Option A: Using download script (Recommended)**
+```bash
+python download_models.py
+```
+
+**Option B: Manual download**
+
+Download from 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) and place files according to the directory structure.
+
+**DeepSeek-R1 model** (download separately):
+```bash
+# Using huggingface_hub
+python -c "from huggingface_hub import snapshot_download; snapshot_download('deepseek-ai/DeepSeek-R1-Distill-Qwen-7B', local_dir='Diagnoser/checkpoints/deepseek-r1')"
+```
+
+Or download directly from: 🔗 [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
+
+### 3. Configure DeepSeek API Key
 
 > [!IMPORTANT]
 > **This is a required step to run the Agent!**
@@ -78,11 +111,14 @@ pip install -e .
 1. Get your API key from [DeepSeek Platform](https://platform.deepseek.com/)
 2. Set the environment variable:
 
-**Linux/macOS:**
+**Linux/macOS (temporary):**
 ```bash
 export DEEPSEEK_API_KEY='your-api-key-here'
+```
 
-# For permanent setup, add to ~/.bashrc or ~/.zshrc
+**Linux/macOS (permanent, recommended):**
+```bash
+# Add to ~/.bashrc or ~/.zshrc
 echo "export DEEPSEEK_API_KEY='your-api-key-here'" >> ~/.bashrc
 source ~/.bashrc
 ```
@@ -92,13 +128,23 @@ source ~/.bashrc
 $env:DEEPSEEK_API_KEY = "your-api-key-here"
 ```
 
-### 3. Verify Configuration
+**Windows (permanent):**
+```
+System Properties → Advanced → Environment Variables → New User Variable
+Variable name: DEEPSEEK_API_KEY
+Variable value: your-api-key-here
+```
+
+### 4. Verify Configuration
 
 ```bash
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
+
+# Verify model files
+python download_models.py --verify-only
 ```
 
-### 4. Download Dataset (For Training)
+### 5. Download Dataset (For Training)
 
 > [!NOTE]
 > **Resp-229K dataset (~66GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
