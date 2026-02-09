@@ -352,16 +352,12 @@ Generator 支持生成以下类型的呼吸音：
 
 在此向这些项目的开发者和贡献者表示衷心的感谢！
 
-## �📄 许可证
+## 📄 许可证
 
-本项目仅供学术研究使用。
+本项目使用 [MIT 许可证](./LICENSE)。
 
 ## 📧 联系方式
 
 如有问题，请联系：
 
 **邮箱**: [pzhang176@connect.hkust-gz.edu.cn](mailto:pzhang176@connect.hkust-gz.edu.cn)
-
----
-
-*最后更新: 2026年2月*

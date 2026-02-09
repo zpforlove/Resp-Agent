@@ -262,14 +262,10 @@ We sincerely thank the developers and contributors of these projects!
 
 ## 📄 License
 
-This project is for academic research purposes only.
+This project is licensed under the [MIT License](./LICENSE).
 
 ## 📧 Contact
 
 For questions or feedback, please contact:
 
 **Email**: [pzhang176@connect.hkust-gz.edu.cn](mailto:pzhang176@connect.hkust-gz.edu.cn)
-
----
-
-*Last updated: February 2026*
