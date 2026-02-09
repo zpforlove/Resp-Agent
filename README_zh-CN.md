@@ -34,54 +34,34 @@ Agent/
 
 ## ⚙️ 环境配置
 
-### 方式 A：pip 安装（推荐）
-
-**1. 创建干净的 conda 环境：**
-```bash
-conda create -n breath python=3.10 -y
-conda activate breath
-```
-
-**2. 安装 PyTorch（CUDA 支持）：**
-```bash
-pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
-```
-
-**3. 安装 resp-agent：**
-```bash
-pip install resp-agent
-```
-
-安装后直接使用：
-```bash
-resp-agent chat --lang zh   # 中文版交互智能体
-resp-agent chat --lang en   # 英文版交互智能体
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
-```
-
-### 方式 B：克隆仓库
+### 1. 克隆仓库并创建环境
 
 ```bash
 git clone https://github.com/zpforlove/Resp-Agent.git
 cd Resp-Agent
 conda create -n breath python=3.10 -y
 conda activate breath
+```
+
+### 2. 安装 PyTorch（CUDA 支持）
+
+```bash
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+### 3. 安装 resp-agent
+
+**方式 A：从 PyPI 安装（推荐）**
+```bash
+pip install resp-agent
+```
+
+**方式 B：可编辑模式安装（开发用）**
+```bash
 pip install -e .
 ```
 
-### 依赖安装（不使用 pip 时）
-
-```bash
-pip install -r requirements.txt
-```
-
-或手动安装：
-```bash
-pip install openai pandas torch torchaudio transformers huggingface_hub
-```
-
-### 2. 下载模型权重
+### 4. 下载模型权重
 
 > [!IMPORTANT]
 > **模型文件（~22GB）托管在 HuggingFace，运行前必须下载！**
@@ -103,7 +83,7 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download('dee
 
 或直接从这里下载：🔗 [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
 
-### 3. DeepSeek API Key 配置
+### 5. DeepSeek API Key 配置
 
 > [!IMPORTANT]
 > **这是运行 Agent 必需的关键步骤！**
@@ -137,7 +117,7 @@ $env:DEEPSEEK_API_KEY = "your-api-key-here"
 变量值: your-api-key-here
 ```
 
-### 4. 验证配置
+### 6. 验证配置
 
 ```bash
 python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_KEY') else '未检测到 API Key')"
@@ -146,7 +126,7 @@ python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_
 python download_models.py --verify-only
 ```
 
-### 5. 下载数据集（训练用）
+### 7. 下载数据集（训练用）
 
 > [!NOTE]
 > **Resp-229K 数据集（~66GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
@@ -180,6 +160,19 @@ data:
 ```
 
 ## 🚀 快速开始
+
+> [!NOTE]
+> 请确保您已完成上述所有配置步骤（模型下载 + API Key 配置）后再运行。
+
+### 使用 CLI 命令行（pip 安装后）：
+```bash
+resp-agent chat --lang zh   # 中文版交互智能体
+resp-agent chat --lang en   # 英文版交互智能体
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+```
+
+### 使用 Python 脚本：
 
 **中文版：**
 ```bash

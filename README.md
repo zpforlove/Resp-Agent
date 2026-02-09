@@ -34,54 +34,34 @@ Agent/
 
 ## ⚙️ Setup
 
-### Option A: Install as Package (Recommended)
-
-**1. Create a clean conda environment:**
-```bash
-conda create -n breath python=3.10 -y
-conda activate breath
-```
-
-**2. Install PyTorch with CUDA support:**
-```bash
-pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
-```
-
-**3. Install resp-agent:**
-```bash
-pip install resp-agent
-```
-
-Then use directly:
-```bash
-resp-agent chat --lang en   # English interactive agent
-resp-agent chat --lang zh   # Chinese interactive agent
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
-```
-
-### Option B: Clone Repository
+### 1. Clone Repository & Create Environment
 
 ```bash
 git clone https://github.com/zpforlove/Resp-Agent.git
 cd Resp-Agent
 conda create -n breath python=3.10 -y
 conda activate breath
+```
+
+### 2. Install PyTorch with CUDA Support
+
+```bash
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+```
+
+### 3. Install resp-agent
+
+**Option A: Install from PyPI (Recommended)**
+```bash
+pip install resp-agent
+```
+
+**Option B: Install in Editable Mode (for development)**
+```bash
 pip install -e .
 ```
 
-### Install Dependencies (Without pip install)
-
-```bash
-pip install -r requirements.txt
-```
-
-Or install manually:
-```bash
-pip install openai pandas torch torchaudio transformers huggingface_hub
-```
-
-### 2. Download Model Weights
+### 4. Download Model Weights
 
 > [!IMPORTANT]
 > **Model files (~22GB) are hosted on HuggingFace. Must download before running!**
@@ -103,7 +83,7 @@ python -c "from huggingface_hub import snapshot_download; snapshot_download('dee
 
 Or download directly from: 🔗 [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
 
-### 3. Configure DeepSeek API Key
+### 5. Configure DeepSeek API Key
 
 > [!IMPORTANT]
 > **This is a required step to run the Agent!**
@@ -135,7 +115,7 @@ Variable name: DEEPSEEK_API_KEY
 Variable value: your-api-key-here
 ```
 
-### 4. Verify Configuration
+### 6. Verify Configuration
 
 ```bash
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
@@ -144,7 +124,7 @@ python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API
 python download_models.py --verify-only
 ```
 
-### 5. Download Dataset (For Training)
+### 7. Download Dataset (For Training)
 
 > [!NOTE]
 > **Resp-229K dataset (~66GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
@@ -179,6 +159,18 @@ data:
 
 ## 🚀 Quick Start
 
+> [!NOTE]
+> Make sure you have completed all setup steps above (model downloads + API key configuration) before running.
+
+### Using CLI (after pip install):
+```bash
+resp-agent chat --lang en   # English interactive agent
+resp-agent chat --lang zh   # Chinese interactive agent
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+```
+
+### Using Python scripts:
 ```bash
 cd /path/to/Agent
 
