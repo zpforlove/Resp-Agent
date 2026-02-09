@@ -72,13 +72,6 @@ pip install -e .
 > [!IMPORTANT]
 > **Model files (~22GB) are hosted on HuggingFace. Must download before running!**
 
-**Option A: Using download script (Recommended)**
-```bash
-python download_models.py
-```
-
-**Option B: Manual download**
-
 Download from 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) and place files according to the directory structure.
 
 **DeepSeek-R1 model** (download separately):
@@ -125,24 +118,12 @@ Variable value: your-api-key-here
 
 ```bash
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
-
-# Verify model files
-python download_models.py --verify-only
 ```
 
 ### 7. Download Dataset (For Training)
 
 > [!NOTE]
 > **Resp-229K dataset (~66GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
-
-**Option A: Using download script (Recommended):**
-```bash
-python download_dataset.py
-# Or specify output directory:
-python download_dataset.py --output-dir ./data
-```
-
-**Option B: Manual download:**
 
 Download from 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset):
 ```python

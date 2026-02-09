@@ -72,13 +72,6 @@ pip install -e .
 > [!IMPORTANT]
 > **模型文件（~22GB）托管在 HuggingFace，运行前必须下载！**
 
-**方式 A：使用下载脚本（推荐）**
-```bash
-python download_models.py
-```
-
-**方式 B：手动下载**
-
 从 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) 下载并按下面的目录结构放置文件。
 
 **DeepSeek-R1 模型**（单独下载）：
@@ -127,24 +120,12 @@ $env:DEEPSEEK_API_KEY = "your-api-key-here"
 
 ```bash
 python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_KEY') else '未检测到 API Key')"
-
-# 验证模型文件
-python download_models.py --verify-only
 ```
 
 ### 7. 下载数据集（训练用）
 
 > [!NOTE]
 > **Resp-229K 数据集（~66GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
-
-**方式 A：使用下载脚本（推荐）**
-```bash
-python download_dataset.py
-# 或指定输出目录：
-python download_dataset.py --output-dir ./data
-```
-
-**方式 B：手动下载**
 
 从 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset) 下载：
 ```python
