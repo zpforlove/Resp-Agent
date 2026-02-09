@@ -53,14 +53,8 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 
 **Option A: Install from PyPI (Recommended)**
 ```bash
-pip install resp-agent
+pip install resp-agent -i https://pypi.org/simple/
 ```
-
-> [!TIP]
-> If you have configured a mirror (e.g., Tsinghua mirror) and want to install the latest version immediately, use the official PyPI source:
-> ```bash
-> pip install resp-agent -i https://pypi.org/simple/
-> ```
 
 **Option B: Install in Editable Mode (for development)**
 ```bash
