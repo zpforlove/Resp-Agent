@@ -70,7 +70,7 @@ pip install -e .
 ### 4. Download Model Weights
 
 > [!IMPORTANT]
-> **Model files (~22GB) are hosted on HuggingFace. Must download before running!**
+> **Model files are hosted on HuggingFace. Must download before running!**
 
 Download from 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) and place files according to the directory structure.
 
