@@ -31,7 +31,7 @@ def main():
         "--metadata_csv", type=str, required=True, help="Path to metadata CSV file"
     )
     diagnose_parser.add_argument(
-        "--config", type=str, default=None, help="Path to configuration file"
+        "--config", type=str, required=True, help="Path to configuration file (e.g., ./Diagnoser/config.yaml)"
     )
     diagnose_parser.add_argument(
         "--device", type=str, default="cuda:0", help="Computation device"
@@ -51,7 +51,7 @@ def main():
         "--out_dir", type=str, required=True, help="Output directory"
     )
     generate_parser.add_argument(
-        "--config", type=str, default=None, help="Path to configuration file"
+        "--config", type=str, required=True, help="Path to configuration file (e.g., ./Generator/config.yaml)"
     )
     generate_parser.add_argument(
         "--device", type=str, default="cuda:0", help="Computation device"
