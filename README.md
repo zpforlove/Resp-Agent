@@ -117,7 +117,7 @@ python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API
 ### 7. Download Dataset (For Training)
 
 > [!NOTE]
-> **Resp-229K dataset (~66GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
+> **Resp-229K dataset (~70GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
 
 Download from 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset):
 ```python

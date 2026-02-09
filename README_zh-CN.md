@@ -119,7 +119,7 @@ python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_
 ### 7. 下载数据集（训练用）
 
 > [!NOTE]
-> **Resp-229K 数据集（~66GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
+> **Resp-229K 数据集（~70GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
 
 从 🤗 [AustinZhang/resp-agent-dataset](https://huggingface.co/datasets/AustinZhang/resp-agent-dataset) 下载：
 ```python
