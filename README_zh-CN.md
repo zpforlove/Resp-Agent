@@ -149,21 +149,19 @@ data:
 ```bash
 resp-agent chat --lang zh   # 中文版交互智能体
 resp-agent chat --lang en   # 英文版交互智能体
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
+resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma --out_dir ./output --config ./Generator/config.yaml
 ```
 
 ### 使用 Python 脚本：
 
 **中文版：**
 ```bash
-cd /path/to/Agent
 python Resp_agent_chinese.py
 ```
 
 **英文版：**
 ```bash
-cd /path/to/Agent
 python Resp_agent_english.py
 ```
 
