@@ -70,7 +70,7 @@ pip install -e .
 ### 4. 下载模型权重
 
 > [!IMPORTANT]
-> **模型文件托管在 HuggingFace，运行前必须下载！**
+> **模型文件（~16GB）托管在 HuggingFace，运行前必须下载！**
 
 从 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) 下载并按下面的目录结构放置文件。
 
