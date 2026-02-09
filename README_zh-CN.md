@@ -56,6 +56,12 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 pip install resp-agent
 ```
 
+> [!TIP]
+> 如果您配置了国内镜像源（如清华源），想立即安装最新版本，请使用官方 PyPI 源：
+> ```bash
+> pip install resp-agent -i https://pypi.org/simple/
+> ```
+
 **方式 B：可编辑模式安装（开发用）**
 ```bash
 pip install -e .
