@@ -20,39 +20,9 @@ pip install resp-agent -i https://pypi.org/simple/
 
 ## Quick Start
 
-### Python API
-
-```python
-from resp_agent import BEATs, BEATsConfig
-from resp_agent.diagnoser import run_diagnoser
-from resp_agent.generator import run_generator
-
-# Diagnose respiratory sounds
-result = run_diagnoser(
-    audio_dir="./audio",
-    output_dir="./output",
-    metadata_csv="./metadata.csv",
-    config_path="./Diagnoser/config.yaml"
-)
-
-# Generate respiratory sounds
-audio = run_generator(
-    ref_audio="./reference.wav",
-    disease="Asthma",
-    out_dir="./generated",
-    config_path="./Generator/config.yaml"
-)
-```
-
 ### Command Line Interface
 
 ```bash
-# Run diagnosis
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv --config ./Diagnoser/config.yaml
-
-# Run generation
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output --config ./Generator/config.yaml
-
 # Start interactive chat agent
 resp-agent chat --lang zh  # Chinese
 resp-agent chat --lang en  # English
