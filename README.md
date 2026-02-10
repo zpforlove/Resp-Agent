@@ -109,7 +109,44 @@ Variable value: your-api-key-here
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
 ```
 
-### 7. Download Dataset (For Training)
+### 7. Quick Start
+
+> [!NOTE]
+> Make sure you have completed all setup steps above (model downloads + API key configuration) before running.
+
+#### Interactive Chat (Recommended)
+
+Start the interactive agent to perform diagnosis, generation, and closed-loop iteration through natural language:
+
+```bash
+resp-agent chat --lang en   # English interactive agent
+resp-agent chat --lang zh   # Chinese interactive agent
+```
+
+#### Alternative: Batch Tools
+
+Run diagnosis or generation directly as one-shot commands (no interactive loop):
+
+```bash
+# Diagnose respiratory sounds
+resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
+    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
+
+# Generate respiratory sounds
+resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
+    --out_dir ./output --config ./Generator/config.yaml
+```
+
+#### Using Python scripts:
+```bash
+# English version
+python Resp_agent_english.py
+
+# Chinese version
+python Resp_agent_chinese.py
+```
+
+### 8. Download Dataset (For Training)
 
 > [!NOTE]
 > **Resp-229K dataset (~70GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
@@ -136,7 +173,7 @@ data:
 ## 🏋️ Training
 
 > [!NOTE]
-> **Training requires GPU(s) with CUDA support. Make sure you have installed `resp-agent` (Step 3) and downloaded the dataset (Step 7).**
+> **Training requires GPU(s) with CUDA support. Make sure you have installed `resp-agent` (Step 3) and downloaded the dataset (Step 8).**
 
 ### Prerequisites
 
@@ -181,43 +218,6 @@ deepspeed train_llm.py \
 > - DeepSpeed configs (`ds_config_*.json`) control distributed training settings such as ZeRO stage, gradient accumulation, and mixed precision. Modify them to fit your hardware setup.
 > - Model hyperparameters are defined in `config.yaml` within each module directory.
 > - Training logs and metrics are automatically tracked via W&B.
-
-## 🚀 Quick Start
-
-> [!NOTE]
-> Make sure you have completed all setup steps above (model downloads + API key configuration) before running.
-
-### Interactive Chat (Recommended)
-
-Start the interactive agent to perform diagnosis, generation, and closed-loop iteration through natural language:
-
-```bash
-resp-agent chat --lang en   # English interactive agent
-resp-agent chat --lang zh   # Chinese interactive agent
-```
-
-### Alternative: Batch Tools
-
-Run diagnosis or generation directly as one-shot commands (no interactive loop):
-
-```bash
-# Diagnose respiratory sounds
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
-    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-
-# Generate respiratory sounds
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
-    --out_dir ./output --config ./Generator/config.yaml
-```
-
-### Using Python scripts:
-```bash
-# English version
-python Resp_agent_english.py
-
-# Chinese version
-python Resp_agent_chinese.py
-```
 
 ## 📋 Usage Guide
 

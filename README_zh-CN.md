@@ -111,7 +111,47 @@ $env:DEEPSEEK_API_KEY = "your-api-key-here"
 python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_KEY') else '未检测到 API Key')"
 ```
 
-### 7. 下载数据集（训练用）
+### 7. 快速开始
+
+> [!NOTE]
+> 请确保您已完成上述所有配置步骤（模型下载 + API Key 配置）后再运行。
+
+#### 交互式聊天（推荐）
+
+启动交互式智能体，通过自然语言进行诊断、生成和闭环迭代：
+
+```bash
+resp-agent chat --lang zh   # 中文版交互智能体
+resp-agent chat --lang en   # 英文版交互智能体
+```
+
+#### 备选：批处理工具
+
+直接运行单次诊断或生成命令（无交互循环）：
+
+```bash
+# 诊断呼吸音
+resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
+    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
+
+# 生成呼吸音
+resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
+    --out_dir ./output --config ./Generator/config.yaml
+```
+
+#### 使用 Python 脚本：
+
+**中文版：**
+```bash
+python Resp_agent_chinese.py
+```
+
+**英文版：**
+```bash
+python Resp_agent_english.py
+```
+
+### 8. 下载数据集（训练用）
 
 > [!NOTE]
 > **Resp-229K 数据集（~70GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
@@ -138,7 +178,7 @@ data:
 ## 🏋️ 模型训练
 
 > [!NOTE]
-> **训练需要支持 CUDA 的 GPU。请确保已安装 `resp-agent`（步骤 3）并已下载数据集（步骤 7）。**
+> **训练需要支持 CUDA 的 GPU。请确保已安装 `resp-agent`（步骤 3）并已下载数据集（步骤 8）。**
 
 ### 前置准备
 
@@ -183,48 +223,6 @@ deepspeed train_llm.py \
 > - DeepSpeed 配置文件（`ds_config_*.json`）控制分布式训练设置，如 ZeRO 优化阶段、梯度累积和混合精度。请根据您的硬件配置进行调整。
 > - 模型超参数在各模块目录下的 `config.yaml` 中定义。
 > - 训练日志和指标通过 W&B 自动跟踪。
-
-## 🚀 快速开始
-
-> [!NOTE]
-> 请确保您已完成上述所有配置步骤（模型下载 + API Key 配置）后再运行。
-
-### 交互式聊天（推荐）
-
-启动交互式智能体，通过自然语言进行诊断、生成和闭环迭代：
-
-```bash
-resp-agent chat --lang zh   # 中文版交互智能体
-resp-agent chat --lang en   # 英文版交互智能体
-```
-
-### 备选：批处理工具
-
-直接运行单次诊断或生成命令（无交互循环）：
-
-```bash
-# 诊断呼吸音
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
-    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-
-# 生成呼吸音
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
-    --out_dir ./output --config ./Generator/config.yaml
-```
-
-### 使用 Python 脚本：
-
-**中文版：**
-```bash
-python Resp_agent_chinese.py
-```
-
-**英文版：**
-```bash
-python Resp_agent_english.py
-```
-
-启动后将看到任务示例提示，准备接收用户指令。
 
 ## 📋 使用指南
 
