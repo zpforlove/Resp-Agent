@@ -236,8 +236,8 @@ deepspeed train_llm.py \
 
 | Command | Function |
 |---------|----------|
-| `help` / `examples` / `template` | Show task templates |
-| `quit` / `exit` / `stop` | Exit the Agent |
+| `help` | Show task templates |
+| `quit` | Exit the Agent |
 
 ## 🔄 Workflow
 

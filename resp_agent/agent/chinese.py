@@ -384,9 +384,7 @@ def print_agent_examples():
     print("【简单诊断】", diag)
     print("【简单生成】", gen)
     print("【高级任务：迭代分析 (推荐)】", iterate)
-    print(
-        "提示：发送 '模板/help' 可随时再次显示以上示例，发送 '停止/quit' 则退出智能体系统。\n"
-    )
+    print("提示：发送 '模板' 可随时再次显示以上示例，发送 '停止' 则退出智能体系统。\n")
 
 
 class RespAgentChinese:
@@ -469,11 +467,11 @@ def main():
     while True:
         try:
             user_prompt = input("你: ").strip()
-            if user_prompt.lower() in ["停止", "quit", "exit", "stop"]:
+            if user_prompt == "停止":
                 print("再见！")
                 break
 
-            if user_prompt.lower() in ["模板", "help", "template", "examples"]:
+            if user_prompt == "模板":
                 print_agent_examples()
                 continue
 

@@ -463,8 +463,8 @@ def print_agent_examples():
     print("[Simple generation]", gen)
     print("[Advanced: iterative analysis (recommended)]", iterate)
     print(
-        'Tip: Type "help" at any time to show these examples again, '
-        'or type "quit" to exit the agent.\n'
+        'Tip: Type "help" to show these examples again, '
+        'or type "quit" to exit.\n'
     )
 
 
@@ -548,11 +548,11 @@ def main():
     while True:
         try:
             user_prompt = input("You: ").strip()
-            if user_prompt.lower() in ["stop", "quit", "exit"]:
+            if user_prompt.lower() == "quit":
                 print("Goodbye!")
                 break
 
-            if user_prompt.lower() in ["template", "examples", "help"]:
+            if user_prompt.lower() == "help":
                 print_agent_examples()
                 continue
 
