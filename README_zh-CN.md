@@ -116,6 +116,18 @@ resp-agent chat --lang zh   # 中文版交互智能体
 resp-agent chat --lang en   # 英文版交互智能体
 ```
 
+#### 使用 Python 脚本：
+
+**中文版：**
+```bash
+python Resp_agent_chinese.py
+```
+
+**英文版：**
+```bash
+python Resp_agent_english.py
+```
+
 #### 备选：批处理工具
 
 直接运行单次诊断或生成命令（无交互循环）：
@@ -128,18 +140,6 @@ resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output 
 # 生成呼吸音
 resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
     --out_dir ./output --config ./Generator/config.yaml
-```
-
-#### 使用 Python 脚本：
-
-**中文版：**
-```bash
-python Resp_agent_chinese.py
-```
-
-**英文版：**
-```bash
-python Resp_agent_english.py
 ```
 
 ### 7. 下载数据集（训练用）

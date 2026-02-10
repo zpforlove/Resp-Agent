@@ -114,6 +114,15 @@ resp-agent chat --lang en   # English interactive agent
 resp-agent chat --lang zh   # Chinese interactive agent
 ```
 
+#### Using Python scripts:
+```bash
+# English version
+python Resp_agent_english.py
+
+# Chinese version
+python Resp_agent_chinese.py
+```
+
 #### Alternative: Batch Tools
 
 Run diagnosis or generation directly as one-shot commands (no interactive loop):
@@ -126,15 +135,6 @@ resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output 
 # Generate respiratory sounds
 resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
     --out_dir ./output --config ./Generator/config.yaml
-```
-
-#### Using Python scripts:
-```bash
-# English version
-python Resp_agent_english.py
-
-# Chinese version
-python Resp_agent_chinese.py
 ```
 
 ### 7. Download Dataset (For Training)
