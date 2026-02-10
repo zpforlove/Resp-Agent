@@ -56,11 +56,6 @@ pip install resp-agent -i https://pypi.org/simple/
 ```
 > 此命令会一次性安装推理和训练所需的全部依赖（包括 `deepspeed`、`wandb`、`matplotlib` 等）。
 
-**开发模式安装（可编辑模式）：**
-```bash
-pip install -e .
-```
-
 ### 4. 下载模型权重
 
 > [!IMPORTANT]

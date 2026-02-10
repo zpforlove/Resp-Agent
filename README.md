@@ -56,11 +56,6 @@ pip install resp-agent -i https://pypi.org/simple/
 ```
 > This installs all dependencies for both inference and training (including `deepspeed`, `wandb`, `matplotlib`, etc.).
 
-**For development (editable mode):**
-```bash
-pip install -e .
-```
-
 ### 4. Download Model Weights
 
 > [!IMPORTANT]
