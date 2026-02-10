@@ -51,14 +51,20 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 
 ### 3. 安装 resp-agent
 
-**方式 A：从 PyPI 安装（推荐）**
+**方式 A：仅推理使用（推荐大多数用户）**
 ```bash
 pip install resp-agent -i https://pypi.org/simple/
 ```
 
-**方式 B：可编辑模式安装（开发用）**
+**方式 B：包含训练依赖（开发与训练用）**
 ```bash
-pip install -e .
+pip install "resp-agent[train]" -i https://pypi.org/simple/
+```
+> 此方式会额外安装 `deepspeed`、`wandb` 和 `matplotlib` 等模型训练所需依赖。
+
+**方式 C：可编辑模式安装（开发用）**
+```bash
+pip install -e ".[train]"
 ```
 
 ### 4. 下载模型权重
@@ -139,6 +145,64 @@ data:
   val_root: "./data/valid"
   test_root: "./data/test"
 ```
+
+## 🏋️ 模型训练
+
+> [!NOTE]
+> **训练需要支持 CUDA 的 GPU。请确保已安装训练依赖（上方方式 B 或 C）并已下载数据集（步骤 7）。**
+
+### 前置准备
+
+1. 安装训练依赖（如尚未安装）：
+   ```bash
+   pip install "resp-agent[train]" -i https://pypi.org/simple/
+   ```
+   或单独安装：
+   ```bash
+   pip install deepspeed wandb matplotlib
+   ```
+
+2. 登录 Weights & Biases 进行实验追踪：
+   ```bash
+   wandb login
+   ```
+
+3. 在对应的 `config.yaml` 文件中更新数据路径。
+
+### 训练 Diagnoser（Longformer）
+
+```bash
+cd Diagnoser
+deepspeed train_longformer.py \
+    --deepspeed \
+    --deepspeed_config ds_config_longformer.json \
+    --config config.yaml
+```
+
+### 训练 Generator — CFM 模型
+
+```bash
+cd Generator
+deepspeed train_cfm.py \
+    --deepspeed \
+    --deepspeed_config ds_config_cfm.json \
+    --config config.yaml
+```
+
+### 训练 Generator — LLM 模型
+
+```bash
+cd Generator
+deepspeed train_llm.py \
+    --deepspeed \
+    --deepspeed_config ds_config_llm.json \
+    --config config.yaml
+```
+
+> [!TIP]
+> - DeepSpeed 配置文件（`ds_config_*.json`）控制分布式训练设置，如 ZeRO 优化阶段、梯度累积和混合精度。请根据您的硬件配置进行调整。
+> - 模型超参数在各模块目录下的 `config.yaml` 中定义。
+> - 训练日志和指标通过 W&B 自动跟踪。
 
 ## 🚀 快速开始
 

@@ -51,14 +51,20 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 
 ### 3. Install resp-agent
 
-**Option A: Install from PyPI (Recommended)**
+**Option A: Inference Only (Recommended for most users)**
 ```bash
 pip install resp-agent -i https://pypi.org/simple/
 ```
 
-**Option B: Install in Editable Mode (for development)**
+**Option B: With Training Dependencies (for development & training)**
 ```bash
-pip install -e .
+pip install "resp-agent[train]" -i https://pypi.org/simple/
+```
+> This additionally installs `deepspeed`, `wandb`, and `matplotlib` required for model training.
+
+**Option C: Install in Editable Mode (for development)**
+```bash
+pip install -e ".[train]"
 ```
 
 ### 4. Download Model Weights
@@ -137,6 +143,64 @@ data:
   val_root: "./data/valid"
   test_root: "./data/test"
 ```
+
+## 🏋️ Training
+
+> [!NOTE]
+> **Training requires GPU(s) with CUDA support. Make sure you have installed training dependencies (Option B or C above) and downloaded the dataset (Step 7).**
+
+### Prerequisites
+
+1. Install training dependencies (if not already done):
+   ```bash
+   pip install "resp-agent[train]" -i https://pypi.org/simple/
+   ```
+   Or install individually:
+   ```bash
+   pip install deepspeed wandb matplotlib
+   ```
+
+2. Login to Weights & Biases for experiment tracking:
+   ```bash
+   wandb login
+   ```
+
+3. Update data paths in the corresponding `config.yaml` files.
+
+### Train Diagnoser (Longformer)
+
+```bash
+cd Diagnoser
+deepspeed train_longformer.py \
+    --deepspeed \
+    --deepspeed_config ds_config_longformer.json \
+    --config config.yaml
+```
+
+### Train Generator — CFM Model
+
+```bash
+cd Generator
+deepspeed train_cfm.py \
+    --deepspeed \
+    --deepspeed_config ds_config_cfm.json \
+    --config config.yaml
+```
+
+### Train Generator — LLM Model
+
+```bash
+cd Generator
+deepspeed train_llm.py \
+    --deepspeed \
+    --deepspeed_config ds_config_llm.json \
+    --config config.yaml
+```
+
+> [!TIP]
+> - DeepSpeed configs (`ds_config_*.json`) control distributed training settings such as ZeRO stage, gradient accumulation, and mixed precision. Modify them to fit your hardware setup.
+> - Model hyperparameters are defined in `config.yaml` within each module directory.
+> - Training logs and metrics are automatically tracked via W&B.
 
 ## 🚀 Quick Start
 
