@@ -95,13 +95,12 @@ Variable name: DEEPSEEK_API_KEY
 Variable value: your-api-key-here
 ```
 
-### 6. Verify Configuration
-
+**Verify Configuration:**
 ```bash
 python -c "import os; print('API Key configured' if os.environ.get('DEEPSEEK_API_KEY') else 'API Key not found')"
 ```
 
-### 7. Quick Start
+### 6. Quick Start
 
 > [!NOTE]
 > Make sure you have completed all setup steps above (model downloads + API key configuration) before running.
@@ -138,7 +137,7 @@ python Resp_agent_english.py
 python Resp_agent_chinese.py
 ```
 
-### 8. Download Dataset (For Training)
+### 7. Download Dataset (For Training)
 
 > [!NOTE]
 > **Resp-229K dataset (~70GB, 229K audio files, 407+ hours) is hosted on HuggingFace. Required only for training/fine-tuning.**
@@ -165,7 +164,7 @@ data:
 ## 🏋️ Training
 
 > [!NOTE]
-> **Training requires GPU(s) with CUDA support. Make sure you have installed `resp-agent` (Step 3) and downloaded the dataset (Step 8).**
+> **Training requires GPU(s) with CUDA support. Make sure you have installed `resp-agent` (Step 3) and downloaded the dataset (Step 7).**
 
 ### Prerequisites
 

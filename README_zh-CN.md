@@ -97,13 +97,12 @@ $env:DEEPSEEK_API_KEY = "your-api-key-here"
 变量值: your-api-key-here
 ```
 
-### 6. 验证配置
-
+**验证配置：**
 ```bash
 python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_KEY') else '未检测到 API Key')"
 ```
 
-### 7. 快速开始
+### 6. 快速开始
 
 > [!NOTE]
 > 请确保您已完成上述所有配置步骤（模型下载 + API Key 配置）后再运行。
@@ -143,7 +142,7 @@ python Resp_agent_chinese.py
 python Resp_agent_english.py
 ```
 
-### 8. 下载数据集（训练用）
+### 7. 下载数据集（训练用）
 
 > [!NOTE]
 > **Resp-229K 数据集（~70GB，229K 音频文件，407+ 小时）托管在 HuggingFace。仅训练/微调时需要下载。**
@@ -170,7 +169,7 @@ data:
 ## 🏋️ 模型训练
 
 > [!NOTE]
-> **训练需要支持 CUDA 的 GPU。请确保已安装 `resp-agent`（步骤 3）并已下载数据集（步骤 8）。**
+> **训练需要支持 CUDA 的 GPU。请确保已安装 `resp-agent`（步骤 3）并已下载数据集（步骤 7）。**
 
 ### 前置准备
 
