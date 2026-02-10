@@ -189,12 +189,27 @@ deepspeed train_llm.py \
 > [!NOTE]
 > 请确保您已完成上述所有配置步骤（模型下载 + API Key 配置）后再运行。
 
-### 使用 CLI 命令行（pip 安装后）：
+### 交互式聊天（推荐）
+
+启动交互式智能体，通过自然语言进行诊断、生成和闭环迭代：
+
 ```bash
 resp-agent chat --lang zh   # 中文版交互智能体
 resp-agent chat --lang en   # 英文版交互智能体
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma --out_dir ./output --config ./Generator/config.yaml
+```
+
+### 备选：批处理工具
+
+直接运行单次诊断或生成命令（无交互循环）：
+
+```bash
+# 诊断呼吸音
+resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
+    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
+
+# 生成呼吸音
+resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
+    --out_dir ./output --config ./Generator/config.yaml
 ```
 
 ### 使用 Python 脚本：
@@ -261,8 +276,8 @@ Resp-Agent 支持两种任务模式：
 
 | 命令 | 功能 |
 |-----|------|
-| `模板` / `help` | 显示任务示例模板 |
-| `停止` / `quit` | 退出 Agent 系统 |
+| `模板` / `help` / `template` / `examples` | 显示任务示例模板 |
+| `停止` / `quit` / `exit` / `stop` | 退出 Agent 系统 |
 
 ## 🔄 工作流程
 

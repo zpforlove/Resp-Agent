@@ -420,11 +420,11 @@ def main():
     while True:
         try:
             user_prompt = input("你: ").strip()
-            if user_prompt.lower() in ["停止", "quit"]:
+            if user_prompt.lower() in ["停止", "quit", "exit", "stop"]:
                 print("再见！")
                 break
 
-            if user_prompt in ["模板", "help"]:
+            if user_prompt.lower() in ["模板", "help", "template", "examples"]:
                 print_agent_examples()
                 continue
 

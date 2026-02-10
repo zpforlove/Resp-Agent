@@ -187,12 +187,27 @@ deepspeed train_llm.py \
 > [!NOTE]
 > Make sure you have completed all setup steps above (model downloads + API key configuration) before running.
 
-### Using CLI (after pip install):
+### Interactive Chat (Recommended)
+
+Start the interactive agent to perform diagnosis, generation, and closed-loop iteration through natural language:
+
 ```bash
 resp-agent chat --lang en   # English interactive agent
 resp-agent chat --lang zh   # Chinese interactive agent
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma --out_dir ./output --config ./Generator/config.yaml
+```
+
+### Alternative: Batch Tools
+
+Run diagnosis or generation directly as one-shot commands (no interactive loop):
+
+```bash
+# Diagnose respiratory sounds
+resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
+    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
+
+# Generate respiratory sounds
+resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
+    --out_dir ./output --config ./Generator/config.yaml
 ```
 
 ### Using Python scripts:
