@@ -57,9 +57,9 @@ dev = [
 resp-agent = "resp_agent.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/austin/resp-agent"
-Repository = "https://github.com/austin/resp-agent"
-Documentation = "https://github.com/austin/resp-agent#readme"
+Homepage = "https://github.com/zpforlove/Resp-Agent"
+Repository = "https://github.com/zpforlove/Resp-Agent"
+Documentation = "https://github.com/zpforlove/Resp-Agent#readme"
 
 [tool.setuptools.packages.find]
 where = ["."]

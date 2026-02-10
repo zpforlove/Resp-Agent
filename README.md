@@ -241,8 +241,8 @@ python Resp_agent_chinese.py
 
 | Command | Function |
 |---------|----------|
-| `help` / `examples` | Show task templates |
-| `quit` / `exit` | Exit the Agent |
+| `help` / `examples` / `template` | Show task templates |
+| `quit` / `exit` / `stop` | Exit the Agent |
 
 ## 🔄 Workflow
 
