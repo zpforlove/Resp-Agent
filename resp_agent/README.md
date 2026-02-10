@@ -40,14 +40,16 @@ from resp_agent.generator import run_generator
 result = run_diagnoser(
     audio_dir="./audio",
     output_dir="./output",
-    metadata_csv="./metadata.csv"
+    metadata_csv="./metadata.csv",
+    config_path="./Diagnoser/config.yaml"
 )
 
 # Generate respiratory sounds
 audio = run_generator(
     ref_audio="./reference.wav",
     disease="Asthma",
-    out_dir="./generated"
+    out_dir="./generated",
+    config_path="./Generator/config.yaml"
 )
 ```
 
@@ -55,10 +57,10 @@ audio = run_generator(
 
 ```bash
 # Run diagnosis
-resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv
+resp-agent diagnose --audio_dir ./audio --output_dir ./output --metadata_csv ./metadata.csv --config ./Diagnoser/config.yaml
 
 # Run generation
-resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output
+resp-agent generate --ref_audio ./ref.wav --disease Asthma --out_dir ./output --config ./Generator/config.yaml
 
 # Start interactive chat agent
 resp-agent chat --lang zh  # Chinese

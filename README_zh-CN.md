@@ -14,7 +14,7 @@
 ## 📁 项目结构
 
 ```
-Agent/
+Resp-Agent/
 ├── Diagnoser/               # 诊断器模块
 │   ├── diagnoser_pipeline.py    # 诊断流水线主程序
 │   ├── config.yaml              # 模型配置文件
@@ -299,7 +299,7 @@ graph TD
 错误: 未找到 Python 或 diagnoser_pipeline.py
 ```
 
-**解决方案：** 确保在 `Agent/` 目录下运行程序，且子模块目录结构完整。
+**解决方案：** 确保在 `Resp-Agent/` 目录下运行程序，且子模块目录结构完整。
 
 ### 4. 电子病历格式不匹配
 

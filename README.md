@@ -14,7 +14,7 @@
 ## 📁 Project Structure
 
 ```
-Agent/
+Resp-Agent/
 ├── Diagnoser/               # Diagnoser module
 │   ├── diagnoser_pipeline.py    # Main diagnosis pipeline
 │   ├── config.yaml              # Model configuration
@@ -248,7 +248,7 @@ graph TD
 |-------|----------|
 | `DEEPSEEK_API_KEY not set` | Configure the environment variable as shown above |
 | `API connection failed` | Check API key validity and network connectivity |
-| `Script not found` | Run from the `Agent/` directory |
+| `Script not found` | Run from the `Resp-Agent/` directory |
 
 ## 🔧 Technical Details
 
