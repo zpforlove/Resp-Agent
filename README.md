@@ -15,8 +15,6 @@
 
 ```
 Agent/
-├── Resp_agent_chinese.py    # Chinese version of the Agent
-├── Resp_agent_english.py    # English version of the Agent
 ├── Diagnoser/               # Diagnoser module
 │   ├── diagnoser_pipeline.py    # Main diagnosis pipeline
 │   ├── config.yaml              # Model configuration
@@ -112,15 +110,6 @@ Start the interactive agent to perform diagnosis, generation, and closed-loop it
 ```bash
 resp-agent chat --lang en   # English interactive agent
 resp-agent chat --lang zh   # Chinese interactive agent
-```
-
-#### Using Python scripts:
-```bash
-# English version
-python Resp_agent_english.py
-
-# Chinese version
-python Resp_agent_chinese.py
 ```
 
 #### Alternative: Batch Tools

@@ -15,8 +15,6 @@
 
 ```
 Agent/
-├── Resp_agent_chinese.py    # 中文版 Agent 主程序
-├── Resp_agent_english.py    # 英文版 Agent 主程序
 ├── Diagnoser/               # 诊断器模块
 │   ├── diagnoser_pipeline.py    # 诊断流水线主程序
 │   ├── config.yaml              # 模型配置文件
@@ -114,18 +112,6 @@ python -c "import os; print('API Key 已配置' if os.environ.get('DEEPSEEK_API_
 ```bash
 resp-agent chat --lang zh   # 中文版交互智能体
 resp-agent chat --lang en   # 英文版交互智能体
-```
-
-#### 使用 Python 脚本：
-
-**中文版：**
-```bash
-python Resp_agent_chinese.py
-```
-
-**英文版：**
-```bash
-python Resp_agent_english.py
 ```
 
 #### 备选：批处理工具
