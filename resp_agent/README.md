@@ -4,28 +4,19 @@ A multi-agent framework for respiratory sound diagnosis and generation using dee
 
 ## Installation
 
-### Basic Installation
+### 1. Install PyTorch with CUDA Support
 
 ```bash
-pip install resp-agent
+pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
 ```
 
-### With CUDA Support (Recommended)
+### 2. Install resp-agent
 
-First install PyTorch with CUDA support:
 ```bash
-pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu128
+pip install resp-agent -i https://pypi.org/simple/
 ```
 
-Then install resp-agent:
-```bash
-pip install resp-agent
-```
-
-Or install with CUDA dependencies together:
-```bash
-pip install resp-agent[cuda]
-```
+> This installs all dependencies for both inference and training (including `deepspeed`, `wandb`, `matplotlib`, etc.).
 
 ## Quick Start
 
