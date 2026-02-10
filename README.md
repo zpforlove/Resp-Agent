@@ -112,20 +112,6 @@ resp-agent chat --lang en   # English interactive agent
 resp-agent chat --lang zh   # Chinese interactive agent
 ```
 
-#### Alternative: Batch Tools
-
-Run diagnosis or generation directly as one-shot commands (no interactive loop):
-
-```bash
-# Diagnose respiratory sounds
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
-    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-
-# Generate respiratory sounds
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
-    --out_dir ./output --config ./Generator/config.yaml
-```
-
 ### 7. Download Dataset (For Training)
 
 > [!NOTE]

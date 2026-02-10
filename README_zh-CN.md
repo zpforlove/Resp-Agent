@@ -114,20 +114,6 @@ resp-agent chat --lang zh   # 中文版交互智能体
 resp-agent chat --lang en   # 英文版交互智能体
 ```
 
-#### 备选：批处理工具
-
-直接运行单次诊断或生成命令（无交互循环）：
-
-```bash
-# 诊断呼吸音
-resp-agent diagnose --audio_dir ./Diagnoser/example/audio --output_dir ./output \
-    --metadata_csv ./Diagnoser/example/combined_metadata.csv --config ./Diagnoser/config.yaml
-
-# 生成呼吸音
-resp-agent generate --ref_audio ./Generator/wav/reference_audio.wav --disease Asthma \
-    --out_dir ./output --config ./Generator/config.yaml
-```
-
 ### 7. 下载数据集（训练用）
 
 > [!NOTE]
