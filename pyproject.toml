@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=61.0,<74", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "resp-agent"
-version = "0.1.4"
+version = "0.1.5"
 description = "Resp-Agent: A multi-agent framework for respiratory sound diagnosis and generation"
 readme = "resp_agent/README.md"
 license = {text = "MIT"}
@@ -35,6 +35,10 @@ dependencies = [
     "vocos>=0.1.0",
     "transformers>=4.20.0",
     "accelerate>=0.20.0",
+    "deepspeed>=0.10.0",
+    "wandb>=0.15.0",
+    "matplotlib>=3.5.0",
+    "scikit-learn>=1.0.0",
 ]
 
 [project.optional-dependencies]
@@ -42,11 +46,6 @@ cuda = [
     "torch==2.8.0",
     "torchaudio==2.8.0",
     "torchvision==0.23.0",
-]
-train = [
-    "deepspeed>=0.10.0",
-    "wandb>=0.15.0",
-    "matplotlib>=3.5.0",
 ]
 dev = [
     "pytest>=7.0.0",

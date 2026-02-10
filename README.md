@@ -51,20 +51,14 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 
 ### 3. Install resp-agent
 
-**Option A: Inference Only (Recommended for most users)**
 ```bash
 pip install resp-agent -i https://pypi.org/simple/
 ```
+> This installs all dependencies for both inference and training (including `deepspeed`, `wandb`, `matplotlib`, etc.).
 
-**Option B: With Training Dependencies (for development & training)**
+**For development (editable mode):**
 ```bash
-pip install "resp-agent[train]" -i https://pypi.org/simple/
-```
-> This additionally installs `deepspeed`, `wandb`, and `matplotlib` required for model training.
-
-**Option C: Install in Editable Mode (for development)**
-```bash
-pip install -e ".[train]"
+pip install -e .
 ```
 
 ### 4. Download Model Weights
@@ -147,20 +141,11 @@ data:
 ## 🏋️ Training
 
 > [!NOTE]
-> **Training requires GPU(s) with CUDA support. Make sure you have installed training dependencies (Option B or C above) and downloaded the dataset (Step 7).**
+> **Training requires GPU(s) with CUDA support. Make sure you have installed `resp-agent` (Step 3) and downloaded the dataset (Step 7).**
 
 ### Prerequisites
 
-1. Install training dependencies (if not already done):
-   ```bash
-   pip install "resp-agent[train]" -i https://pypi.org/simple/
-   ```
-   Or install individually:
-   ```bash
-   pip install deepspeed wandb matplotlib
-   ```
-
-2. Login to Weights & Biases for experiment tracking:
+1. Login to Weights & Biases for experiment tracking:
    ```bash
    wandb login
    ```

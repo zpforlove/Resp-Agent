@@ -51,20 +51,14 @@ pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.
 
 ### 3. 安装 resp-agent
 
-**方式 A：仅推理使用（推荐大多数用户）**
 ```bash
 pip install resp-agent -i https://pypi.org/simple/
 ```
+> 此命令会一次性安装推理和训练所需的全部依赖（包括 `deepspeed`、`wandb`、`matplotlib` 等）。
 
-**方式 B：包含训练依赖（开发与训练用）**
+**开发模式安装（可编辑模式）：**
 ```bash
-pip install "resp-agent[train]" -i https://pypi.org/simple/
-```
-> 此方式会额外安装 `deepspeed`、`wandb` 和 `matplotlib` 等模型训练所需依赖。
-
-**方式 C：可编辑模式安装（开发用）**
-```bash
-pip install -e ".[train]"
+pip install -e .
 ```
 
 ### 4. 下载模型权重
@@ -149,20 +143,11 @@ data:
 ## 🏋️ 模型训练
 
 > [!NOTE]
-> **训练需要支持 CUDA 的 GPU。请确保已安装训练依赖（上方方式 B 或 C）并已下载数据集（步骤 7）。**
+> **训练需要支持 CUDA 的 GPU。请确保已安装 `resp-agent`（步骤 3）并已下载数据集（步骤 7）。**
 
 ### 前置准备
 
-1. 安装训练依赖（如尚未安装）：
-   ```bash
-   pip install "resp-agent[train]" -i https://pypi.org/simple/
-   ```
-   或单独安装：
-   ```bash
-   pip install deepspeed wandb matplotlib
-   ```
-
-2. 登录 Weights & Biases 进行实验追踪：
+1. 登录 Weights & Biases 进行实验追踪：
    ```bash
    wandb login
    ```
