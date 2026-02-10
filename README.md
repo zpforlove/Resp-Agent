@@ -63,14 +63,6 @@ pip install resp-agent -i https://pypi.org/simple/
 
 Download from 🤗 [AustinZhang/resp-agent-models](https://huggingface.co/AustinZhang/resp-agent-models) and place files according to the directory structure.
 
-**DeepSeek-R1 model** (download separately):
-```bash
-# Using huggingface_hub
-python -c "from huggingface_hub import snapshot_download; snapshot_download('deepseek-ai/DeepSeek-R1-Distill-Qwen-7B', local_dir='Diagnoser/checkpoints/deepseek-r1')"
-```
-
-Or download directly from: 🔗 [deepseek-ai/DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)
-
 ### 5. Configure DeepSeek API Key
 
 > [!IMPORTANT]
