@@ -3,6 +3,7 @@ data:
   train_root: "/mnt/data/RespAgent/Fusion/dataset/train"   # Training data path
   val_root: "/mnt/data/RespAgent/Fusion/dataset/valid"     # Validation data path
   test_root: "/mnt/data/RespAgent/Fusion/dataset/test"     # Test data path
+  metadata_jsonl: "audio_descriptions.jsonl"               # Metadata JSONL file path
   num_workers: 4                    # Number of worker processes for data loading per GPU
   pin_memory: true                  # Whether to use pinned memory for data loading
 
