@@ -361,7 +361,24 @@ Generator 支持生成以下类型的呼吸音：
 - COPD（慢性阻塞性肺疾病）
 - 其他呼吸系统疾病（根据模型训练数据）
 
-## � 致谢
+## 📝 论文引用
+
+**[Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis](https://openreview.net/forum?id=ZkoojtEm3W&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions))** (ICLR 2026)
+
+如果您觉得本工作对您有帮助，请引用我们的论文：
+
+```bibtex
+@inproceedings{
+zhang2026respagent,
+title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
+author={Pengfei ZHANG and Tianxin Xie and Minghao Yang and Li Liu},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
+url={https://openreview.net/forum?id=ZkoojtEm3W}
+}
+```
+
+## 🙏 致谢
 
 本项目的开发得益于以下优秀的开源项目：
 
