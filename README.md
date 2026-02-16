@@ -274,7 +274,7 @@ client = OpenAI(
 - COPD
 - Other respiratory conditions (based on training data)
 
-## � Paper
+## 📝 Paper
 
 **[Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis](https://openreview.net/forum?id=ZkoojtEm3W&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions))** (ICLR 2026)
 
@@ -291,7 +291,7 @@ url={https://openreview.net/forum?id=ZkoojtEm3W}
 }
 ```
 
-## �🙏 Acknowledgements
+## 🙏 Acknowledgements
 
 This project is built upon the following excellent open-source projects:
 
