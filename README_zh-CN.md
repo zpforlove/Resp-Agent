@@ -368,11 +368,10 @@ Generator 支持生成以下类型的呼吸音：
 如果您觉得本工作对您有帮助，请引用我们的论文：
 
 ```bibtex
-@inproceedings{
-zhangresp,
-title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
-author={ZHANG, Pengfei and Xie, Tianxin and Yang, Minghao and Liu, Li},
-booktitle={The Fourteenth International Conference on Learning Representations}
+@inproceedings{zhangresp,
+  title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
+  author={ZHANG, Pengfei and Xie, Tianxin and Yang, Minghao and Liu, Li},
+  booktitle={The Fourteenth International Conference on Learning Representations}
 }
 ```
 
