@@ -282,12 +282,10 @@ If you find this work useful, please cite our paper:
 
 ```bibtex
 @inproceedings{
-zhang2026respagent,
+zhangresp,
 title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
-author={Pengfei ZHANG and Tianxin Xie and Minghao Yang and Li Liu},
-booktitle={The Fourteenth International Conference on Learning Representations},
-year={2026},
-url={https://openreview.net/forum?id=ZkoojtEm3W}
+author={ZHANG, Pengfei and Xie, Tianxin and Yang, Minghao and Liu, Li},
+booktitle={The Fourteenth International Conference on Learning Representations}
 }
 ```
 
