@@ -281,11 +281,10 @@ client = OpenAI(
 If you find this work useful, please cite our paper:
 
 ```bibtex
-@inproceedings{
-zhangresp,
-title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
-author={ZHANG, Pengfei and Xie, Tianxin and Yang, Minghao and Liu, Li},
-booktitle={The Fourteenth International Conference on Learning Representations}
+@inproceedings{zhangresp,
+  title={Resp-Agent: An Agent-Based System for Multimodal Respiratory Sound Generation and Disease Diagnosis},
+  author={ZHANG, Pengfei and Xie, Tianxin and Yang, Minghao and Liu, Li},
+  booktitle={The Fourteenth International Conference on Learning Representations}
 }
 ```
 
